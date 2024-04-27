@@ -1,0 +1,91 @@
+const allProductsCategories = [
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA2141', name: 'Impresión' },
+      { id: 'MLA1676', name: 'Impresoras' }
+    ],
+    [
+      { id: 'MLA1276', name: 'Deportes y Fitness' },
+      { id: 'MLA3723', name: 'Pulsómetros y Cronómetros' },
+      { id: 'MLA414225', name: 'Smartbands' }
+    ],
+    [
+      { id: 'MLA1051', name: 'Celulares y Teléfonos' },
+      { id: 'MLA3502', name: 'Accesorios para Celulares' },
+      { id: 'MLA3518', name: 'Auriculares y Manos Libres' }
+    ],
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA1656', name: 'Monitores y Accesorios' },
+      { id: 'MLA14407', name: 'Monitores' }
+    ],
+    [
+      { id: 'MLA1000', name: 'Electrónica, Audio y Video' },
+      { id: 'MLA1002', name: 'Televisores' }
+    ],
+    [
+      { id: 'MLA1000', name: 'Electrónica, Audio y Video' },
+      { id: 'MLA409810', name: 'Audio' },
+      { id: 'MLA3697', name: 'Auriculares' }
+    ],
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA430687', name: 'Notebooks y Accesorios' },
+      { id: 'MLA3377', name: 'Accesorios para Laptops' },
+      { id: 'MLA3579', name: 'Bolsos Porta Notebooks' },
+      { id: 'MLA16543', name: 'Mochilas' }
+    ],
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA1718', name: 'Estabilizadores y UPS' },
+      { id: 'MLA1720', name: 'UPS' }
+    ],
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA430687', name: 'Notebooks y Accesorios' },
+      { id: 'MLA1652', name: 'Notebooks' }
+    ],
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA1660', name: 'Lectores y Scanners' },
+      { id: 'MLA72721', name: 'Scanners' }
+    ],
+    [
+      { id: 'MLA1051', name: 'Celulares y Teléfonos' },
+      { id: 'MLA1055', name: 'Celulares y Smartphones' }
+    ],
+    [
+      { id: 'MLA1051', name: 'Celulares y Teléfonos' },
+      { id: 'MLA417704', name: 'Smartwatches y Accesorios' },
+      { id: 'MLA352679', name: 'Smartwatches' }
+    ],
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA400950', name: 'Tablets y Accesorios' },
+      { id: 'MLA82085', name: 'Tablets' }
+    ],
+    [
+      { id: 'MLA1648', name: 'Computación' },
+      { id: 'MLA430637', name: 'PC de Escritorio' },
+      { id: 'MLA1649', name: 'PC' }
+    ]
+  ];
+
+// Crear un diccionario que tenga el siguiente tipado para luego acceder a los valores con Object.values para obtener la información y Object.keys para evitar duplicados: 
+//  'MLA1648': {
+//     id: 'MLA1648',
+//     name: "Computación",
+//     parentId: ???  
+// }
+
+const categories:any = {}
+
+allProductsCategories.forEach(productCategories => {
+  productCategories.forEach((category, index) => {
+      const {id} = category;
+      const parent = productCategories[index-1];
+      const parentId = parent?.id ?? null;
+      categories[id] = {...category, parentId};
+  })
+});
+console.log((Object.values(categories)))
